@@ -32,7 +32,6 @@ namespace DegreeProof
         print("Name: ", currentUser.name.c_str());
     }
 
-    // user views an add... so update the user's adviews count
     void Users::updateclicks(account_name account){
         require_auth(account);
 
@@ -44,6 +43,28 @@ namespace DegreeProof
         users.modify(iterator, account, [&](auto &user) {
             user.adclicks += 1;
         });
+    }
+
+    void Users::create_ad(account_name account, ad new_ad)
+    {
+        require_auth(account);
+
+        adIndex ads(_self, _self);
+
+        auto iterator = ads.find(new_ad.ad_id);
+        eosio_assert(iterator == ads.end(), "Ad for this ID already exists");
+
+        ads.emplace(account, [&](auto& ad) {
+            ad.ad_id = new_ad.ad_id;
+            ad.redirect_link = new_ad.redirect_link;
+            ad.link_to_image = new_ad.link_to_image;
+            ad.num_to_display = 0;
+        });
+    }
+
+    void Users::fund_ad(account_name account, ad ad_to_fund, uint64_t amount)
+    {
+        
     }
 
 }
