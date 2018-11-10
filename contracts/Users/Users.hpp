@@ -19,10 +19,11 @@ namespace AdCentive
                 uint64_t account_name;
                 string name;
                 string username;
+                uint64_t adclicks = 0;
 
                 uint64_t primary_key() const { return account_name; }
 
-                EOSLIB_SERIALIZE(user, (account_name)(name)(username))
+                EOSLIB_SERIALIZE(user, (account_name)(name)(username)(adviews))
             };   
 
             //@abi action
@@ -31,8 +32,11 @@ namespace AdCentive
             //@abi action
             void getuser(const account_name account);
 
+            //@abi action
+            void updateclicks(account_name account);
+
             typedef multi_index<N(user), user> userIndex;
     };
 
-    EOSIO_ABI(Users, (adduser)(getuser));
+    EOSIO_ABI(Users, (adduser)(getuser)(updateclicks));
 }
