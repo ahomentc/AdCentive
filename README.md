@@ -21,7 +21,7 @@
 
 ### Siddarth:<br/>
 #### design the logo.<br/>
-#### explore how to connect ui with blockchain<br/><br/>
+#### explore how to connect ui with blockchain<br/>
 #### help sriram<br/><br/>
 
 
