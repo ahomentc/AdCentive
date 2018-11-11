@@ -16,12 +16,23 @@ chrome.runtime.onMessage.addListener(
         if (localStorage.getItem("total_elements") === null) {
             console.log("first");
             localStorage["total_elements"] = 1; // Get from EOS backend
-            window.val = localStorage["total_elements"];
+            chrome.runtime.sendMessage({
+              msg: "token_updated", 
+              data: {
+                  content: localStorage["total_elements"]
+              }
+          });
+
           }
         else {
             console.log("second");
             localStorage["total_elements"] =  Number(localStorage["total_elements"]) + Number(1);
-            window.val = localStorage["total_elements"];
+            chrome.runtime.sendMessage({
+              msg: "token_updated", 
+              data: {
+                  content: localStorage["total_elements"]
+              }
+          });
         }
         sendResponse({ farewell: "any response from background" });
       } else {

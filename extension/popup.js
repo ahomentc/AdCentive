@@ -11,7 +11,6 @@ window.addEventListener('load', function load(event){
     var backButton = document.getElementById('preferences');
     backButton.addEventListener('click', function() {
         console.log("test");
-        window.open('preferences.html');
     });
     return true;
 });

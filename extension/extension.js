@@ -1,6 +1,4 @@
 document.addEventListener('click', (event) => {
-	console.log("ola2");
-	//chrome.runtime.sendMessage({"message" : "Click"});
 	chrome.runtime.sendMessage({message : "Click"}, function(response) {
 		console.log("resp: ", response.farewell);
 		chrome.runtime.sendMessage({message2 : "Click2"});

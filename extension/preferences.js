@@ -7,7 +7,7 @@ function popup(action) {
 
 document.addEventListener("DOMContentLoaded", function (event) {
     var backButton = document.getElementById('back');
-    backButton.addEventListener('click', function() {
+    backButton.addEventListener('click', function(event) {
         console.log('going back');
         window.location.href='popup.html';
     });
