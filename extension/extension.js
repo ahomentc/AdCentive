@@ -23,9 +23,3 @@ chrome.runtime.onMessage.addListener(
 		}
 	}
   );
-
-/*var document = document.getElementById("iframe");
-document.getElementById("iframe").addEventListener("click", function(){
-	console.log("ola");
-    chrome.runtime.sendMessage({"message" : "Click"});
-});*/
