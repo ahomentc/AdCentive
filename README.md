@@ -3,8 +3,8 @@
 ## Tasks:
 <br/>
 <br/>
-### Andrei:<br/>
-#### smart contracts<br/>
+## Andrei:<br/>
+### smart contracts<br/>
 #### produce blocks<br/>
 #### integrate with UI<br/>
 <br/>
