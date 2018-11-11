@@ -8,9 +8,10 @@ window.addEventListener('load', function load(event){
     var createButton = document.getElementById('refresh');
     createButton.addEventListener('click', function() { refresh(); });
 
-    /*var backButton = document.getElementById('preferences');
+    var backButton = document.getElementById('preferences');
     backButton.addEventListener('click', function() {
-        window.location.href='preferences.html';
-    });*/
+        console.log("test");
+        window.open('preferences.html');
+    });
     return true;
 });

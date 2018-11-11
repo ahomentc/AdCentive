@@ -1,10 +1,3 @@
-window.addEventListener('load', function load(event){
-    var backButton = document.getElementById('back');
-    backButton.addEventListener('click', function() {
-        window.location.href='popup.html';
-    });
-});
-
 function popup(action) {
     chrome.tabs.query({currentWindow: true, active: true}, function (tabs){
     var activeTab = tabs[0];
@@ -13,6 +6,12 @@ function popup(action) {
 }
 
 document.addEventListener("DOMContentLoaded", function (event) {
+    var backButton = document.getElementById('back');
+    backButton.addEventListener('click', function() {
+        console.log('going back');
+        window.location.href='popup.html';
+    });
+
     var _musicselector = document.querySelector('input[name=music]');
     _musicselector.addEventListener('change', function (event) {
         if (_musicselector.checked) {
