@@ -1,8 +1,7 @@
 # AdCentive
 
 ## Tasks:
-<br/>
-<br/>
+
 ## Andrei:<br/>
 ### smart contracts<br/>
 #### produce blocks<br/>
