@@ -10,6 +10,11 @@
 */
 
 function refresh() {
-console.log("test: ", localStorage["total_elements"]);
-document.getElementById("tokens").innerHTML = localStorage["total_elements"];
+    console.log("current token value: ", localStorage["total_elements"]);
+    document.getElementById("tokens").value = localStorage["total_elements"];
 }
+
+window.addEventListener('load', function load(event){
+    var createButton = document.getElementById('refresh');
+    createButton.addEventListener('click', function() { refresh(); });
+});
