@@ -1,5 +1,6 @@
 #include "Market.hpp"
 #include <eosiolib/asset.hpp>
+#include <stdio.h>
 
 namespace AdCentive {
 
@@ -27,26 +28,26 @@ namespace AdCentive {
     //     update(buyer, product.product_id, -1);
     // }    
 
-    void Market::add_ad(account_name account, account_name user_belong_to, market_ad newAd)
+    void Market::addad(account_name account, account_name user_belong_to, market_ad newAd)
     {
         require_auth(account);
 
         marketAdIndex ads(_self, _self);
 
-        auto iterator = ads.find(new_ad.ad_id);
+        auto iterator = ads.find(newAd.ad_id);
         eosio_assert(iterator == ads.end(), "Ad for this ID already exists");
 
         ads.emplace(account, [&](auto& ad) {
-            ad.ad_id = new_ad.ad_id;
+            ad.ad_id = newAd.ad_id;
             ad.user_belong_to = user_belong_to;
             ad.name = newAd.name;
-            ad.redirect_link = new_ad.redirect_link;
-            ad.link_to_image = new_ad.link_to_image;
+            ad.redirect_link = newAd.redirect_link;
+            ad.link_to_image = newAd.link_to_image;
             ad.num_to_display = 0;
         });
     }
 
-    void Market::remove_ad(account_name account, uint64_t ad_id)
+    void Market::removead(account_name account, uint64_t ad_id)
     {
         require_auth(account);
 
@@ -58,14 +59,20 @@ namespace AdCentive {
         ads.erase(iterator); 
     }
 
-    Market::market_ad Market::request_ad(account_name account)
+    Market::market_ad Market::requestad(account_name account)
     {
         marketAdIndex ads(_self, _self);
 
-        auto iterator = products.find(productId);
-        eosio_assert(iterator != products.end(), "Product not found");
+        // get size of ads
+        int size = std::distance(ads.begin(),ads.end());
 
-        auto product = products.get(productId);
+        // get random index in ads
+        srand (time(NULL));
+        int index = rand() % size;
+
+        auto iter = ads.begin() + index;
+        market_ad ad = *iter;
+        return ad;
     }
 
 }

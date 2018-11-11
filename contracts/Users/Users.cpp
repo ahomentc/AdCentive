@@ -45,7 +45,7 @@ namespace DegreeProof
         });
     }
 
-    void Users::create_ad(account_name account, ad new_ad, uint64_t amount)
+    void Users::createad(account_name account, ad new_ad, uint64_t amount)
     {
         require_auth(account);
 
@@ -77,7 +77,7 @@ namespace DegreeProof
 
     }
 
-    void Users::fund_ad(account_name account, ad ad_to_fund, uint64_t amount)
+    void Users::fundad(account_name account, ad ad_to_fund, uint64_t amount)
     {
         // **** TO BE DONE *****
     }
