@@ -12,12 +12,16 @@ chrome.runtime.onMessage.addListener(
 		console.log("Req:", request);
 		if( request.message === "music" ) {
 			console.log("music");
+			document.getElementById('adimg').src='https://github.com/ahomentc/AdCentive/blob/master/Blog/Music_ad.jpg';
 		} else if ( request.message === "events" ) {
 			console.log("events");
+			document.getElementById('adimg').src='https://github.com/ahomentc/AdCentive/blob/master/Blog/Event_ad.jpg';
 		} else if ( request.message === "food" ) {
 			console.log("food");
+			document.getElementById('adimg').src='https://github.com/ahomentc/AdCentive/blob/master/Blog/Food_ad.jpg';
 		} else if ( request.message === "electronics" ) {
 			console.log("electronics");
+			document.getElementById('adimg').src='https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg';
 		}
 	}
   );
