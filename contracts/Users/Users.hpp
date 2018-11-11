@@ -54,9 +54,9 @@ namespace AdCentive
             // --- MAYBE MOVE BELOW TO ITS OWN "Advertisers" CONTRACT ----
 
             //@abi action
-            void create_ad(account_name account, ad new_ad); // When creating pass in a {...} for new_ad. 
-                                                             // Need to manually add id so find a way to automate.
-                                                             // Maybe fund in here too.
+            void create_ad(account_name account, ad new_ad, uint64_t amount);   // When creating pass in a {...} for new_ad. 
+                                                                                // Need to manually add id so find a way to automate.
+                                                                                // Maybe fund in here too.
 
             //@abi action
             void fund_ad(account_name account, ad ad_to_fund, uint64_t amount);

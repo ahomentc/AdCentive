@@ -45,7 +45,7 @@ namespace DegreeProof
         });
     }
 
-    void Users::create_ad(account_name account, ad new_ad)
+    void Users::create_ad(account_name account, ad new_ad, uint64_t amount)
     {
         require_auth(account);
 
@@ -60,11 +60,26 @@ namespace DegreeProof
             ad.link_to_image = new_ad.link_to_image;
             ad.num_to_display = 0;
         });
+
+
+        // **** TO BE DONE:  ****
+
+        // action(vector<permission_level>(), N(anorak), N(transfer), make_tuple(buyer, _self, productPrice, string(""))).send();
+
+        // action(vector<permission_level>(), N(market), N(additem), make_tuple(buyer, 
+        //     product.product_id,
+        //     product.name,
+        //     product.power,
+        //     product.health,
+        //     product.ability,
+        //     product.level_up
+        // )).send();
+
     }
 
     void Users::fund_ad(account_name account, ad ad_to_fund, uint64_t amount)
     {
-        
+        // **** TO BE DONE *****
     }
 
 }
