@@ -6,7 +6,6 @@ window.addEventListener('load', function load(event){
 });
 
 function popup(action) {
-    console.log(action);
     chrome.tabs.query({currentWindow: true, active: true}, function (tabs){
     var activeTab = tabs[0];
     chrome.tabs.sendMessage(activeTab.id, {"message": action});

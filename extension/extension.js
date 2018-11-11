@@ -9,6 +9,7 @@ document.addEventListener('click', (event) => {
 
 chrome.runtime.onMessage.addListener(
 	function(request, sender, sendResponse) {
+		console.log("Req:", request);
 		if( request.message === "music" ) {
 			console.log("music");
 		} else if ( request.message === "events" ) {
