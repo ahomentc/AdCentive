@@ -17,7 +17,7 @@
     "background"
   ],
   "content_scripts": [{
-    "js": ["extension.js", "popup.js"],
+    "js": ["extension.js"],
     "matches": ["<all_urls>", "http://*/*", "https://*/*"],
     "all_frames": true
   }],
