@@ -1,7 +1,7 @@
 #include "Users.hpp"
 #include <eosiolib/asset.hpp>
 
-namespace DegreeProof
+namespace AdCentive
 {
     void Users::adduser(account_name account, string& name, string& username)
     {
@@ -54,32 +54,27 @@ namespace DegreeProof
         auto iterator = ads.find(new_ad.ad_id);
         eosio_assert(iterator == ads.end(), "Ad for this ID already exists");
 
+        action(vector<permission_level>(), N(usr), N(transfer), make_tuple(account, _self, amount, string(""))).send();
+
         ads.emplace(account, [&](auto& ad) {
             ad.ad_id = new_ad.ad_id;
             ad.redirect_link = new_ad.redirect_link;
             ad.link_to_image = new_ad.link_to_image;
-            ad.num_to_display = 0;
+            ad.num_to_display = (int)(amount * .5);  // token to amoun to display is 1 to 10. 2 token per 1 display
         });
 
-
-        // **** TO BE DONE:  ****
-
-        // action(vector<permission_level>(), N(anorak), N(transfer), make_tuple(buyer, _self, productPrice, string(""))).send();
-
-        // action(vector<permission_level>(), N(market), N(additem), make_tuple(buyer, 
-        //     product.product_id,
-        //     product.name,
-        //     product.power,
-        //     product.health,
-        //     product.ability,
-        //     product.level_up
-        // )).send();
+        action(vector<permission_level>(), N(market), N(addad), make_tuple(account, 
+            new_ad.ad_id,
+            new_ad.redirect_link,
+            new_ad.link_to_image,
+            (int)(amount * .5)
+        )).send();
 
     }
 
-    void Users::fundad(account_name account, ad ad_to_fund, uint64_t amount)
-    {
-        // **** TO BE DONE *****
-    }
+    // void Users::fundad(account_name account, ad ad_to_fund, uint64_t amount)
+    // {
+    //     // **** TO BE DONE *****
+    // }
 
 }

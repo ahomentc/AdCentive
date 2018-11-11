@@ -1,9 +1,12 @@
 #include "Market.hpp"
 #include <eosiolib/asset.hpp>
-#include <stdio.h>
 
 namespace AdCentive {
 
+    /*  when add is clicked:
+    reward the user and the website
+    subtract 1 from the ad's num to display (not doing now). */
+    
     // void Market::ad_clicked(account_name user, account_name website, uint64_t adId) {
     //     marketAdIndex ads(_self, _self);
 
@@ -11,8 +14,6 @@ namespace AdCentive {
     //     eosio_assert(iterator != ads.end(), "The ad is not found");
 
     //     auto ad = ads.get(adId);
-
-    //     asset productPrice = asset(product.price, string_to_symbol(4, "OAS"));
 
     //     action(vector<permission_level>(), N(anorak), N(transfer), make_tuple(buyer, _self, productPrice, string(""))).send();
 
@@ -25,10 +26,9 @@ namespace AdCentive {
     //         product.level_up
     //     )).send();
 
-    //     update(buyer, product.product_id, -1);
-    // }    
+    //  }    
 
-    void Market::addad(account_name account, account_name user_belong_to, market_ad newAd)
+    void Market::addad(account_name account, market_ad newAd)
     {
         require_auth(account);
 
@@ -39,11 +39,10 @@ namespace AdCentive {
 
         ads.emplace(account, [&](auto& ad) {
             ad.ad_id = newAd.ad_id;
-            ad.user_belong_to = user_belong_to;
-            ad.name = newAd.name;
             ad.redirect_link = newAd.redirect_link;
             ad.link_to_image = newAd.link_to_image;
             ad.num_to_display = 0;
+            ad.user_belong_to = account;
         });
     }
 
@@ -59,20 +58,44 @@ namespace AdCentive {
         ads.erase(iterator); 
     }
 
-    Market::market_ad Market::requestad(account_name account)
+    void Market::requestad(account_name account)
     {
         marketAdIndex ads(_self, _self);
 
         // get size of ads
         int size = std::distance(ads.begin(),ads.end());
+       
+        // std::time_t now = std::time(0);
+        // boost::random::mt19937 gen{static_cast<std::uint32_t>(now)};
+        // boost::random::uniform_int_distribution<> dist{0, size-1};
 
-        // get random index in ads
-        srand (time(NULL));
-        int index = rand() % size;
+        // int index = dis(gen);
+        int index = 0;
 
-        auto iter = ads.begin() + index;
-        market_ad ad = *iter;
-        return ad;
+        // auto iter = ads.begin() + index;
+        auto iter = ads.begin();
+        
+        // goes through ads till there is one that has non-zero num to display
+        while( true )
+        {
+            market_ad ad = *iter;
+            if(ad.num_to_display < 1)
+            {
+                iter = std::next(iter, 1);
+            }
+            
+        }
+
+        if(iter != ads.end())
+        {
+            market_ad ad = *iter;
+
+            vector <string> returnAd; 
+            returnAd.push_back(std::to_string(ad.ad_id));
+            returnAd.push_back(ad.redirect_link);
+            returnAd.push_back(ad.link_to_image); 
+        }
+
     }
 
 }
