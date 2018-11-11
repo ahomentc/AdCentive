@@ -3,27 +3,27 @@
 ## Tasks:
 <br/>
 <br/>
-### Andrei:
-#### smart contracts
-#### produce blocks
-#### integrate with UI
+### Andrei:<br/>
+#### smart contracts<br/>
+#### produce blocks<br/>
+#### integrate with UI<br/>
 <br/>
-### Sriram:
-#### design the landing page
-#### design the extension (increase tokens on clicking the ad, gather the preferences)
-#### integrate the extension with the landing page (change the ads based on preferences)
-#### history/stats on extension
-#### design the login page
+### Sriram:<br/>
+#### design the landing page<br/>
+#### design the extension (increase tokens on clicking the ad, gather the preferences)<br/>
+#### integrate the extension with the landing page (change the ads based on preferences)<br/>
+#### history/stats on extension<br/>
+#### design the login page<br/>
 <br/>
-### Shreyas:
-#### connect the web ui with blockchain (check boiler plate project, nodeos)
-#### logic for changing ads
-#### ofb
+### Shreyas:<br/>
+#### connect the web ui with blockchain (check boiler plate project, nodeos)<br/>
+#### logic for changing ads<br/>
+#### ofb<br/>
 <br/>
-### Siddarth:
-#### design the logo.
-#### explore how to connect ui with blockchain
-#### help sriram
+### Siddarth:<br/>
+#### design the logo.<br/>
+#### explore how to connect ui with blockchain<br/><br/>
+#### help sriram<br/>
 <br/>
 <br/>
 
